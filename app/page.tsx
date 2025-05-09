@@ -184,28 +184,28 @@ export default function Home() {
                 category="Audiobook"
                 duration="1:24"
                 icon={<Book />}
-              />audioSrc="C:\Users\sltlm\Documents\Sound Recordings\voice-samples-website\audiobook-narration-sample.mp3"
+              />audioSrc="audio\audiobook-narration-sample.mp3"
               <AudioSample
                 title="Corporate Explainer"
                 description="Professional and clear explanation of business concepts"
                 category="Explainer"
                 duration="0:58"
                 icon={<Presentation />}
-              />audioSrc="C:\Users\sltlm\Documents\Sound Recordings\voice-samples-website\corporate-explainer-sample.mp3"
+              />audioSrc="audio\corporate-explainer-sample.mp3"
               <AudioSample
                 title="E-Learning Module"
                 description="Instructional content with engaging delivery"
                 category="E-Learning"
                 duration="1:12"
                 icon={<GraduationCap />}
-              />audioSrc="C:\Users\sltlm\Documents\Sound Recordings\voice-samples-website\E-learning-module-sample.mp3"
+              />audioSrc="audio\E-learning-module-sample.mp3"
               <AudioSample
                 title="Documentary Style"
                 description="Authoritative and informative narration"
                 category="Documentary"
                 duration="1:36"
                 icon={<Film />}
-              />audioSrc="C:\Users\sltlm\Documents\Sound Recordings\voice-samples-website\Documentary-Style-sample.mp3"
+              />audioSrc="audio\Documentary-Style-sample.mp3"
             </div>
           </div>
         </section>
@@ -331,60 +331,67 @@ export default function Home() {
             </p>
 
             <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg border border-amber-100">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      placeholder="Your name"
-                      className="flex h-10 w-full rounded-md border border-amber-200 bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      placeholder="Your email address"
-                      className="flex h-10 w-full rounded-md border border-amber-200 bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="project" className="text-sm font-medium">
-                      Project Type
-                    </label>
-                    <select
-                      id="project"
-                      className="flex h-10 w-full rounded-md border border-amber-200 bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      <option value="">Select project type</option>
-                      <option value="audiobook">Audiobook</option>
-                      <option value="elearning">E-Learning</option>
-                      <option value="explainer">Explainer Video</option>
-                      <option value="commercial">Commercial</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      placeholder="Tell me about your project"
-                      className="flex min-h-[120px] w-full rounded-md border border-amber-200 bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    />
-                  </div>
-                </div>
-                <Button type="submit" className="w-full bg-amber-600 hover:bg-amber-700">
-                  Send Message
-                </Button>
-              </form>
+            <form action="https://formspree.io/f/https://formspree.io/f/xvgaqayw" method="POST" className="space-y-6">
+  <div className="grid grid-cols-1 gap-4">
+    <div className="space-y-2">
+      <label htmlFor="name" className="text-sm font-medium">
+        Name
+      </label>
+      <input
+        id="name"
+        name="name"
+        placeholder="Your name"
+        required
+        className="flex h-10 w-full rounded-md border border-amber-200 bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+      />
+    </div>
+    <div className="space-y-2">
+      <label htmlFor="email" className="text-sm font-medium">
+        Email
+      </label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        placeholder="Your email address"
+        required
+        className="flex h-10 w-full rounded-md border border-amber-200 bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+      />
+    </div>
+    <div className="space-y-2">
+      <label htmlFor="project" className="text-sm font-medium">
+        Project Type
+      </label>
+      <select
+        id="project"
+        name="project"
+        className="flex h-10 w-full rounded-md border border-amber-200 bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        <option value="">Select project type</option>
+        <option value="audiobook">Audiobook</option>
+        <option value="elearning">E-Learning</option>
+        <option value="explainer">Explainer Video</option>
+        <option value="commercial">Commercial</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div className="space-y-2">
+      <label htmlFor="message" className="text-sm font-medium">
+        Message
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Tell me about your project"
+        required
+        className="flex min-h-[120px] w-full rounded-md border border-amber-200 bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+      />
+    </div>
+  </div>
+  <Button type="submit" className="w-full bg-amber-600 hover:bg-amber-700">
+    Send Message
+  </Button>
+</form>
             </div>
           </div>
         </section>
@@ -502,8 +509,6 @@ function AudioSample({ title, description, category, duration, icon, audioSrc = 
       </div>
     </div>
   );
-}
-  )
 }
 
 function Skill({ title }) {
