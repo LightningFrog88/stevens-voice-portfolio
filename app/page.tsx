@@ -184,28 +184,32 @@ export default function Home() {
                 category="Audiobook"
                 duration="1:24"
                 icon={<Book />}
-              />audioSrc="audio\audiobook-narration-sample.mp3"
+                audioSrc="audio\audiobook-narration-sample.mp3"
+              />
               <AudioSample
                 title="Corporate Explainer"
                 description="Professional and clear explanation of business concepts"
                 category="Explainer"
                 duration="0:58"
                 icon={<Presentation />}
-              />audioSrc="audio\corporate-explainer-sample.mp3"
+                audioSrc="audio\corporate-explainer-sample.mp3"
+              />
               <AudioSample
                 title="E-Learning Module"
                 description="Instructional content with engaging delivery"
                 category="E-Learning"
                 duration="1:12"
                 icon={<GraduationCap />}
-              />audioSrc="audio\E-learning-module-sample.mp3"
+                audioSrc="audio\E-learning-module-sample.mp3"
+              />
               <AudioSample
                 title="Documentary Style"
                 description="Authoritative and informative narration"
                 category="Documentary"
                 duration="1:36"
                 icon={<Film />}
-              />audioSrc="audio\Documentary-Style-sample.mp3"
+                audioSrc="audio\Documentary-Style-sample.mp3"
+              />
             </div>
           </div>
         </section>
@@ -331,7 +335,7 @@ export default function Home() {
             </p>
 
             <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg border border-amber-100">
-            <form action="https://formspree.io/f/https://formspree.io/f/xvgaqayw" method="POST" className="space-y-6">
+            <form action="https://formspree.io/f/xvgaqayw" method="POST" className="space-y-6">
   <div className="grid grid-cols-1 gap-4">
     <div className="space-y-2">
       <label htmlFor="name" className="text-sm font-medium">
