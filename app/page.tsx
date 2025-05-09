@@ -1,9 +1,10 @@
+"use client"
 import Link from "next/link"
 import Image from "next/image"
 import { Headphones, Mic, FileText, Mail, Play } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-
+import { useState, useRef } from "react"
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -183,28 +184,28 @@ export default function Home() {
                 category="Audiobook"
                 duration="1:24"
                 icon={<Book />}
-              />
+              />audioSrc="C:\Users\sltlm\Documents\Sound Recordings\voice-samples-website\audiobook-narration-sample.mp3"
               <AudioSample
                 title="Corporate Explainer"
                 description="Professional and clear explanation of business concepts"
                 category="Explainer"
                 duration="0:58"
                 icon={<Presentation />}
-              />
+              />audioSrc="C:\Users\sltlm\Documents\Sound Recordings\voice-samples-website\corporate-explainer-sample.mp3"
               <AudioSample
                 title="E-Learning Module"
                 description="Instructional content with engaging delivery"
                 category="E-Learning"
                 duration="1:12"
                 icon={<GraduationCap />}
-              />
+              />audioSrc="C:\Users\sltlm\Documents\Sound Recordings\voice-samples-website\E-learning-module-sample.mp3"
               <AudioSample
                 title="Documentary Style"
                 description="Authoritative and informative narration"
                 category="Documentary"
                 duration="1:36"
                 icon={<Film />}
-              />
+              />audioSrc="C:\Users\sltlm\Documents\Sound Recordings\voice-samples-website\Documentary-Style-sample.mp3"
             </div>
           </div>
         </section>
@@ -413,7 +414,34 @@ export default function Home() {
   )
 }
 
-function AudioSample({ title, description, category, duration, icon }) {
+function AudioSample({ title, description, category, duration, icon, audioSrc = "" }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const audioRef = useRef(null);
+
+  const togglePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+      const percent = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+      setProgress(percent);
+    }
+  };
+
+  const handleEnded = () => {
+    setIsPlaying(false);
+    setProgress(0);
+  };
+
   return (
     <div className="bg-white rounded-lg border border-amber-100 p-6 shadow-lg hover:border-amber-300 transition-all hover:-translate-y-1">
       <div className="flex justify-between items-start mb-4">
@@ -431,16 +459,50 @@ function AudioSample({ title, description, category, duration, icon }) {
           size="sm"
           variant="secondary"
           className="h-8 w-8 rounded-full p-0 flex items-center justify-center bg-amber-600 hover:bg-amber-700 text-white"
+          onClick={togglePlayPause}
         >
-          <Play className="h-4 w-4" />
-          <span className="sr-only">Play</span>
+          {isPlaying ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect x="6" y="4" width="4" height="16" />
+              <rect x="14" y="4" width="4" height="16" />
+            </svg>
+          ) : (
+            <Play className="h-4 w-4" />
+          )}
+          <span className="sr-only">{isPlaying ? "Pause" : "Play"}</span>
         </Button>
         <div className="h-2 flex-1 bg-amber-200 rounded-full overflow-hidden">
-          <div className="bg-amber-600 h-full w-0"></div>
+          <div
+            className="bg-amber-600 h-full transition-all duration-100"
+            style={{ width: `${progress}%` }}
+          ></div>
         </div>
         <span className="text-xs text-muted-foreground">{duration}</span>
+
+        {/* Hidden audio element */}
+        {audioSrc && (
+          <audio
+            ref={audioRef}
+            src={audioSrc}
+            onTimeUpdate={handleTimeUpdate}
+            onEnded={handleEnded}
+            className="hidden"
+          />
+        )}
       </div>
     </div>
+  );
+}
   )
 }
 
